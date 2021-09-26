@@ -26,8 +26,13 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function test()
+    public function mitumori()
     {
-        return view('test');
+        return view('mitumori');
+    }
+
+    public function syoken()
+    {
+        return view('syoken');
     }
 }
