@@ -22,6 +22,22 @@
             </div>
 
             <br />
+            <!-- <select v-model="selected"> -->
+                <!-- <option v-for = "(value, key) in options" v-bind:key="key.val"> -->
+                    <!-- <th v-for="(value, key) in columns" :key="key">{{ value }}</th> -->
+                        <!-- {{ option.text }} -->
+                <!-- </option> -->
+            <!-- </select> -->
+
+            <select v-model="selected">
+                <option v-for="(option,key) in options" :key="key" v-bind:value="option.value">
+                    {{ option.text }}
+                </option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+
+
+            <br />
             <div class="row">
                 <div class="col-3">
                 「機種」を選ぶ
@@ -49,11 +65,15 @@
             return{
                 battery:'',
                 type:'',
+                selected:'',
+                options: [
+                    { text: 'One', value: 'A' },
+                    { text: 'Two', value: 'B' },
+                    { text: 'Three', value: 'C' }
+                ]
             }
         },
-        methods:function(){
 
-        },
         mounted() {
             console.log('Component mounted.')
         }
