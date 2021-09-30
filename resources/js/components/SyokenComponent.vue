@@ -12,7 +12,7 @@
                 </div>
                 <div class="col">
                     <form>
-                        <select id="battery" v-model="battery">
+                        <select id="battery" v-model="battery" v-on:change="onchange">
                             <option>交換</option>
                             <option>バッテリー液補充</option>
                             <option>問題無し</option>
@@ -22,38 +22,22 @@
             </div>
 
             <br />
-            <!-- <select v-model="selected"> -->
-                <!-- <option v-for = "(value, key) in options" v-bind:key="key.val"> -->
-                    <!-- <th v-for="(value, key) in columns" :key="key">{{ value }}</th> -->
-                        <!-- {{ option.text }} -->
-                <!-- </option> -->
-            <!-- </select> -->
-
-            <select v-model="selected">
-                <option v-for="(option,key) in options" :key="key" v-bind:value="option.value">
-                    {{ option.text }}
-                </option>
-            </select>
-            <span>Selected: {{ selected }}</span>
-
-
-            <br />
             <div class="row">
                 <div class="col-3">
-                「機種」を選ぶ
+                    <select v-model="selected">
+                        <option v-for="(option,key) in options" :key="key" v-bind:value="option.value">
+                            {{ option.text }}
+                        </option>
+                    </select>
                 </div>
                 <div class="col">
-                    <form>
-                        <select id="type" v-model="type">
-                            <option>AP10</option>
-                            <option>AP20</option>
-                            <option>AY500</option>
-                            <option>GT1000</option>
-                        </select>
-                    </form>
+                    <span>Selected: {{ selected }}</span>
                 </div>
             </div>
             <br />
+
+
+
 
         </div>
     </div>
@@ -64,16 +48,28 @@
         data:function(){
             return{
                 battery:'',
-                type:'',
                 selected:'',
-                options: [
-                    { text: 'One', value: 'A' },
-                    { text: 'Two', value: 'B' },
-                    { text: 'Three', value: 'C' }
-                ]
+                options:''
             }
         },
-
+        methods:{
+            onchange:function(){
+                console.log('change70',this.battery);
+                if(this.battery == '交換'){
+                    this.options=[
+                        { text: '交換 One', value: '交換A' },
+                        { text: '交換 Two', value: '交換B' },
+                        { text: '交換 Three', value: '交換C' }
+                    ]
+                }else{
+                    this.options=[
+                        { text: '補充 One', value: '液補充A' },
+                        { text: '補充 Two', value: '液補充B' },
+                        { text: '補充 Three', value: '液補充C' }
+                    ]
+                }
+            }
+        },
         mounted() {
             console.log('Component mounted.')
         }
