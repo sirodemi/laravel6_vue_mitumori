@@ -8,14 +8,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-3">
-                「バッテリーの症状」を選ぶ
+                「症状」
                 </div>
                 <div class="col">
                     <form>
                         <select id="battery" v-model="battery" v-on:change="onchange">
-                            <option>交換</option>
-                            <option>バッテリー液補充</option>
-                            <option>問題無し</option>
+                            <option>バッテリー経年劣化</option>
+                            <option>バッテリー液不足</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-3">
+                「症状」
+                </div>
+                <div class="col">
+                    <form>
+                        <select id="battery" v-model="battery" v-on:change="onchange">
+                            <option>バッテリー経年劣化</option>
+                            <option>バッテリー液不足</option>
                         </select>
                     </form>
                 </div>
@@ -24,20 +38,27 @@
             <br />
             <div class="row">
                 <div class="col-3">
+                    「対策」
+                </div>
+                <div class="col">
                     <select v-model="selected">
                         <option v-for="(option,key) in options" :key="key" v-bind:value="option.value">
                             {{ option.text }}
                         </option>
                     </select>
                 </div>
+
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-3">
+                    「所見」
+                </div>
                 <div class="col">
-                    <span>Selected: {{ selected }}</span>
+                    {{ selected }}
                 </div>
             </div>
-            <br />
-
-
-
 
         </div>
     </div>
@@ -49,23 +70,22 @@
             return{
                 battery:'',
                 selected:'',
-                options:''
+                options:'',
+                measures:''
             }
         },
         methods:{
             onchange:function(){
                 console.log('change70',this.battery);
-                if(this.battery == '交換'){
+                if(this.battery == 'バッテリー経年劣化'){
                     this.options=[
-                        { text: '交換 One', value: '交換A' },
-                        { text: '交換 Two', value: '交換B' },
-                        { text: '交換 Three', value: '交換C' }
+                        { text: 'バッテリー交換　推奨', value: '経年劣化の為、バッテリー交換を推奨します' },
+                        { text: 'バッテリー交換　実施', value: '経年劣化の為、バッテリー交換を実施しました' },
                     ]
                 }else{
                     this.options=[
-                        { text: '補充 One', value: '液補充A' },
-                        { text: '補充 Two', value: '液補充B' },
-                        { text: '補充 Three', value: '液補充C' }
+                        { text: 'バッテリー液補充　推奨', value: 'バッテリー液の補充を推奨します' },
+                        { text: 'バッテリー液補充　実施', value: 'バッテリー液の補充を実施しました' },
                     ]
                 }
             }
