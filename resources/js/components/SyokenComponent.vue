@@ -144,8 +144,6 @@
             },
 
             syoken:function(){
-                console.log('change147',this.fieldLevel);
-
                 if(this.fieldLevel == 'batt-1' && this.report == 'recommend') this.selected = 'バッテリー交換を推奨します'
                 if(this.fieldLevel == 'batt-1' && this.report == 'done') this.selected = 'バッテリー交換を実施しました'
                 if(this.fieldLevel == 'batt-2' && this.report == 'recommend') this.selected = 'バッテリー液の補充を推奨します'
