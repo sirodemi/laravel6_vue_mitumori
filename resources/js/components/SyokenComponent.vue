@@ -69,13 +69,10 @@
                     <button v-on:click="syoken">所見</button>
                 </div>
 
-
                 <div class="col">
                     {{ selected }}
                 </div>
             </div>
-
-
         </div>
     </div>
 </template>
@@ -136,7 +133,6 @@
                         { text: '冷却水ポンプ交換', value: 'pump-2' },
                     ]
                 }
-
             },
 
             onchange_3rdLevel:function(){
